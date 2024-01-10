@@ -27,7 +27,7 @@ public class MarkerDetection : MonoBehaviour
     public void OnButtonDragEvent(int angle)
     {
         delta += angle;
-        obj.rotation = Quaternion.Euler(0, delta, 0);
+        obj.rotation = Quaternion.Euler(obj.rotation.x, delta, obj.rotation.z);
     }
 
     IEnumerator RotateObj(int angle)
@@ -35,7 +35,7 @@ public class MarkerDetection : MonoBehaviour
         while(true)
         {
             delta += angle;
-            obj.rotation = Quaternion.Euler(0, delta, 0);
+            obj.rotation = Quaternion.Euler(obj.rotation.x, delta, obj.rotation.z);
 
             yield return new WaitForSeconds(0.05f);
         }    
