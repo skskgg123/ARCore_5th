@@ -1465,7 +1465,7 @@ MonoBehaviour:
   pokemonInfo:
   - name: Macdonalds
     latitude: 37.51366
-    longitude: 127.03053
+    longitude: 127.0305
     isCaptured: 0
   - name: Starbucks
     latitude: 37.51453

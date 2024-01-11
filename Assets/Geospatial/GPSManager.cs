@@ -121,7 +121,7 @@ public class GPSManager : MonoBehaviour
                     // ¿¹) StartBattle();
                 }
 
-                RotationTransformation(to, compassManager.Angle);
+                RotationTransformation(to, compassManager.Angle * Mathf.Deg2Rad);
             }
 
             yield return new WaitForSeconds(1);
