@@ -17,6 +17,7 @@ public class GPSManager : MonoBehaviour
     [SerializeField] TMP_Text longtitudeTxt;
     float latitude;
     float longtitude;
+    CompassManager compassManager;
 
     [Serializable]
     class PokemonGPS
@@ -36,6 +37,10 @@ public class GPSManager : MonoBehaviour
     }
 
     [SerializeField] List<PokemonGPS> pokemonInfo = new List<PokemonGPS>();
+    private void Awake()
+    {
+        compassManager = FindAnyObjectByType<CompassManager>();
+    }
 
     void Start()
     {
@@ -112,8 +117,11 @@ public class GPSManager : MonoBehaviour
 
                 if (distance < 10)
                 {
-                    // StartBattle();
+                    // 이곳에서 특정 기능을 실행
+                    // 예) StartBattle();
                 }
+
+                RotationTransformation(to, compassManager.Angle);
             }
 
             yield return new WaitForSeconds(1);
@@ -128,7 +136,12 @@ public class GPSManager : MonoBehaviour
           0.0002(20m), 0.0011(110m)
           * 100000
           0.0002, 0.009 -> 20m, 110m   */
-
+    /// <summary>
+    /// GPS A에서 GPS B 사이의 거리를 계산
+    /// </summary>
+    /// <param name="from">GPS A의 좌표</param>
+    /// <param name="to">GPS B의 좌표</param>
+    /// <returns></returns>
     float CalculateDistance(Vector2 from, Vector2 to)
     {
         float distance = 0;
@@ -139,6 +152,28 @@ public class GPSManager : MonoBehaviour
         distance = c * 100000;
 
         return distance;
+    }
+
+    /// <summary>
+    /// XROrigin의 RealWorld 회전 각도를 기준으로 타겟오브젝트의 변환된 좌표를 반환
+    /// </summary>
+    /// <param name="targetCoordinates">타겟오브젝트의 좌표</param>
+    /// <param name="angle">CompassManager 기준의 XROrigin 회전 각도</param>
+    /// <returns></returns>
+    Vector2 RotationTransformation(Vector2 targetCoordinates, float angle)
+    {
+        // 내 GPS 좌표 기준, Pokemon 오브젝트의 GPS(x1, y1)를 계산
+        float x1 = (targetCoordinates.x - latitude) * 100000; // 0.0002 * 100000 = 2
+        float y1 = (targetCoordinates.y - longtitude) * 100000; // 0.0011 * 100000 = 110
+
+        float x2 = (Mathf.Cos(angle) * x1) + (-Mathf.Sin(angle) * y1); // 
+        float y2 = (Mathf.Sin(angle) * x1) + (Mathf.Cos(angle) * y1);
+
+        Vector2 newTargetCoordinates = new Vector2(x2, y2);
+
+        logTxt.text += $"Angle({angle}), Before({x1}, {y1}), After({x2}, {y2})\n"; 
+
+        return newTargetCoordinates;
     }
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// XROrigin이 북쪽으로 부터 얼마나 회전 했는지 확인
@@ -11,6 +12,7 @@ public class CompassManager : MonoBehaviour
     [SerializeField] Transform arrowRoot;
     [SerializeField] TMP_Text angleTxt;
     float angle;
+    public float Angle { get { return angle; } }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,6 @@ public class CompassManager : MonoBehaviour
     {
         arrowRoot.transform.rotation = Quaternion.Euler(0, 0, Input.compass.trueHeading);
         angle = Mathf.RoundToInt(Input.compass.trueHeading);
-        angleTxt.text = $"{360 - angle}˚";
+        angleTxt.text = $"{angle}˚";
     }
 }

@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 123762103}
   - component: {fileID: 123762104}
   - component: {fileID: 123762106}
-  - component: {fileID: 123762105}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -566,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 2983860829034490338, guid: a5a3dfa6a1f281149a4a4bb41874e5ef, type: 3}
+  m_PlanePrefab: {fileID: 1937876220}
   m_DetectionMode: 1
 --- !u!114 &123762100
 MonoBehaviour:
@@ -606,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ace40cdb6098247b671260b99edd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 1802459314}
+  indicator: {fileID: 2009961044}
   logTxt: {fileID: 67224386}
 --- !u!114 &123762103
 MonoBehaviour:
@@ -634,33 +633,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableRendererData: {fileID: 11400000, guid: 736e4ec6553e74e4eae56a74a4453080, type: 2}
---- !u!54 &123762105
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123762096}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &123762106
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2141,7 +2113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033745741025269711, guid: 785f6d6d450fb474db41437008a21b63, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2623,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058794327697516652, guid: ba82c2ad484f24daab641702ff8a6d10, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8058794327697516652, guid: ba82c2ad484f24daab641702ff8a6d10, type: 3}
       propertyPath: m_TagString
@@ -3152,6 +3124,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460905577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2009961044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6084439283310551596, guid: 785f6d6d450fb474db41437008a21b63, type: 3}
+  m_PrefabInstance: {fileID: 1299964917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
